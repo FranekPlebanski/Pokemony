@@ -9,10 +9,6 @@ public class City {
         this.name = name;
     }
 
-    public List<String> getMenu(){
-
-        return null;
-    }
 
     public String getName() {
         return name;

@@ -26,6 +26,10 @@ public class Player {
         return ownedPokemons;
     }
 
+    public void removePokemon(Pokemon pokemon){
+        ownedPokemons.remove(pokemon);
+    }
+
     public String getName() {
         return name;
     }

@@ -4,14 +4,16 @@ import com.pokesim.model.entities.AllPokemons;
 import com.pokesim.model.entities.Player;
 import com.pokesim.model.entities.Pokemon;
 import com.pokesim.model.entities.WildPokemons;
+import com.pokesim.model.game.BattleAction;
 import com.pokesim.model.game.CityAction;
 import com.pokesim.utils.RandomGenerator;
 
 import java.util.Scanner;
 
-public class ConsoleUI {
+public class ConsoleUI implements UI {
     private final Scanner scanner = new Scanner(System.in);
 
+    @Override
     public Player startGame() {
         System.out.println("Welcome to the pokesim game!");
         System.out.println("Choose your name:");
@@ -27,6 +29,7 @@ public class ConsoleUI {
         return new Player(name, AllPokemons.starters.get(chosenPokemon).clone());
     }
 
+    @Override
     public CityAction cityMenu(String city){
         while(true) {
 
@@ -49,7 +52,11 @@ public class ConsoleUI {
         }
     }
 
+
+
+    @Override
     public Pokemon battleInfo(WildPokemons wildPokemons, Player currentPlayer) {
+
         System.out.println("WARNING!!! You have encountered " + wildPokemons);
         System.out.println("Choose your fighter: ");
         for (int i = 0; i < currentPlayer.getPokemons().size(); i++) {
@@ -59,8 +66,10 @@ public class ConsoleUI {
         return currentPlayer.getPokemons().get(choice);
     }
 
-    public void battleInterface(WildPokemons wildPokemons, Pokemon currentPokemon, int turn) {
-        if(turn % 2 != 0) {
+    @Override
+    public BattleAction battleInterface(WildPokemons wildPokemons, Pokemon currentPokemon) {
+        while(true) {
+
 
             System.out.println("Your Pokemon: ");
             System.out.println(currentPokemon.getName());
@@ -78,33 +87,40 @@ public class ConsoleUI {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    int attackValue = new RandomGenerator().getRandomInt(currentPokemon.getAttack() - 3, currentPokemon.getAttack() + 3);
-                    wildPokemons.attack(attackValue);
-                    System.out.println("zaatakowales za " + attackValue);
-                    break;
+                    return BattleAction.FIGHT;
                 case 2:
-                    currentPokemon.rest();
-                    System.out.println("wyleczyles sie");
-                    break;
+                    return BattleAction.HEAL;
+                default:
+                    System.out.println("Wrong choice!");
+                    continue;
             }
-
-        }
-        else{
-            System.out.println("Opponent's Turn: ");
-            int random = new RandomGenerator().getRandomInt(0, 100);
-            if(random < 30) {
-                wildPokemons.rest();
-                System.out.println("przeciwnik wyleczyl sie");
-            }
-            else{
-                int attackValue = new RandomGenerator().getRandomInt(wildPokemons.getAttack() - 3, wildPokemons.getAttack() + 3);
-                currentPokemon.attack(attackValue);
-                System.out.println("przeciwnik zaatakowal za " + attackValue);
-            }
-
-
         }
 
+    }
 
+    @Override
+    public void notifyAttackSelf(int attackValue){
+        System.out.println("You've attacked opponent for " + attackValue + " damage!");
+    }
+
+    @Override
+    public void notifyRestSelf(){
+        System.out.println("You've rested and restored 10 hp points");
+    }
+
+    @Override
+    public void notifyAttackOpponent(int attackValue){
+        System.out.println("Opponent attacked you for " + attackValue + " damage!");
+
+    }
+
+    @Override
+    public void notifyRestOpponent(){
+        System.out.println("Opponent has rested and restored 10 hp points");
+    }
+
+    @Override
+    public void opponentTurn(){
+        System.out.println("Opponent's turn!");
     }
 }
