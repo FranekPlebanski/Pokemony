@@ -13,6 +13,7 @@ public class Player {
         ownedPokemons.add(starter);
     }
 
+
     public void addPokemon(Pokemon p) {
         ownedPokemons.add(p);
     }

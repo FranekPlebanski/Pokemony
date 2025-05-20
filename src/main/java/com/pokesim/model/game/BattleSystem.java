@@ -7,8 +7,5 @@ import com.pokesim.utils.RandomGenerator;
 public class BattleSystem {
     private RandomGenerator random = new RandomGenerator();
 
-    public boolean startBattle(Player player, WildPokemons wildPokemons) {
 
-        return false;
-    }
 }

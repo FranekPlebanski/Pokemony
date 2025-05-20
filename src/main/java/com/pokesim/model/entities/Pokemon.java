@@ -34,6 +34,14 @@ public class Pokemon implements Cloneable {
         return hp;
     }
 
+    public void attack(int i){
+        this.hp -= i;
+    }
+
+    public void rest(){
+        this.hp += 10;
+    }
+
     public int getAttack() {
         return attack;
     }
