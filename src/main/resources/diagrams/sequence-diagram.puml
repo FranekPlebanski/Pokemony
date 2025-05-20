@@ -1,0 +1,18 @@
+﻿@startuml
+actor Player
+participant GameController
+participant Game
+participant Road
+participant WildPokemonGetter
+participant BattleSystem
+participant Player
+
+Player -> GameController: run()
+GameController -> Game: start()
+Game -> WildPokemonGetter: getRandomWildPokemon()
+WildPokemonGetter --> Game: WildPokemon
+Game -> BattleSystem: startBattle(Player, WildPokemon)
+BattleSystem --> Game: result
+Game -> Player: addPokemon(WildPokemon) if win
+Game -> GameController: isGameOver()
+@enduml

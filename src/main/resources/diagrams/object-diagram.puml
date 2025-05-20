@@ -1,0 +1,54 @@
+﻿@startuml
+object Player {
+  name = <<chosen by user>>
+  pokemons = [<<chosen on starter>>]
+}
+
+object Pokemon {
+  name = "Bulbasaur"
+  element = "Earth"
+  hp = 100
+  attack = 5
+}
+
+
+object WildPokemon {
+    name = "charmander"
+    element = "fire"
+    hp = 70
+    attack = 12
+}
+
+WildPokemon --|> Pokemon
+
+object City1 {
+  name = "Kanto"
+}
+object City2 {
+  name = "Johto"
+}
+object City3 {
+  name = "Hoenn"
+}
+
+object Road1 {
+  from = City1
+  to = City2
+}
+object Road2 {
+  from = City2
+  to = City3
+}
+object Road3 {
+  from = City3
+  to = City1
+}
+
+Player --> Pokemon
+Road1 --> City1
+Road1 --> City2
+Road2 --> City2
+Road2 --> City3
+Road3 --> City3
+Road3 --> City1
+@enduml

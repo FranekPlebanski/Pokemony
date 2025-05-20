@@ -1,0 +1,30 @@
+﻿@startuml
+[*] --> Start
+Start --> StarterChoice
+StarterChoice --> City
+
+state City{
+
+  Menu --> Heal : choose Heal
+  Menu --> Buy : choose Buy
+  Menu --> Travel : choose Travel
+  Heal --> Menu
+  Buy --> Menu
+  }
+
+Travel --> Road
+
+state Road{
+[*] --> battle
+battle --> win
+battle --> lose
+'win --> NextCity
+}
+win --> NextCity
+lose --> NextCity
+
+NextCity --> Game_Over : if (pokemons == 0)
+NextCity --> Victory : if (pokemons > 5)
+NextCity --> City : if (0 < pokemons > 5)
+
+@enduml

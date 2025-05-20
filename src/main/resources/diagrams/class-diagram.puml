@@ -1,0 +1,106 @@
+﻿@startuml
+package model.entities {
+  class Pokemon {
+    - name: String
+    - element: String
+    - hp: int
+    - attack: int
+  }
+  class WildPokemon extends Pokemon {
+  }
+  class Player {
+    - name: String
+    - pokemons: List<Pokemon>
+    + addPokemon(p: Pokemon): void
+    + hasPokemons(): boolean
+  }
+  class AllPokemons{
+    + getPokemon(): void
+    + getStarters(): List<Pokemon>
+    + getShopPokemons(): List<Pokemon>
+
+  }
+}
+
+package model.world {
+  class City {
+    - name: String
+    + getMenu(): List<String>
+  }
+  class Road {
+    - from: City
+    - to: City
+  }
+}
+
+package model.game {
+  class Game {
+    - player: Player
+    - currentCity: City
+    + start(): void
+    + isGameOver(): boolean
+  }
+  class BattleSystem {
+    + startBattle(player: Player, wildPokemon: WildPokemon): boolean
+  }
+  class StarterSelector {
+    + selectStarter(choice: int): Pokemon
+  }
+  class WildPokemonGetter {
+    + getRandomWildPokemon(): WildPokemon
+  }
+}
+
+package model.store {
+  class PokemonStore {
+    + buyPokemon(): Pokemon
+  }
+}
+
+package view {
+  class ConsoleUI {
+    + displayCityOptions(city: City): void
+    + getStarterChoice(): int
+    + getName(): String
+  }
+}
+
+package controller {
+  class GameController {
+    + run(): void
+  }
+}
+
+package utils {
+  class RandomGenerator {
+    + getRandomInt(min: int, max: int): int
+  }
+}
+
+Game --> Player
+Game --> BattleSystem
+Game --> WildPokemonGetter
+Game --> ConsoleUI
+
+Road --> City : from
+Road --> City : to
+
+Player --> Pokemon
+
+BattleSystem ..> Player
+BattleSystem ..> WildPokemon
+BattleSystem --> RandomGenerator
+
+WildPokemonGetter ..> WildPokemon
+WildPokemonGetter ..> RandomGenerator
+
+ConsoleUI ..> City
+
+StarterSelector --> AllPokemons
+
+PokemonStore --> AllPokemons
+
+GameController --> Game
+
+AllPokemons --> Pokemon
+@enduml
