@@ -1,4 +1,4 @@
-﻿package com.pokesim.view;
+package com.pokesim.view;
 
 import com.pokesim.model.entities.Player;
 import com.pokesim.model.entities.Pokemon;
