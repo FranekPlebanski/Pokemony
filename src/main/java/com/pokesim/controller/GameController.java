@@ -59,6 +59,9 @@ public class GameController {
 
                     if(chosenOne.getHp() <= 0) {
                         currentPlayer.removePokemon(chosenOne);
+                    } else if (wildPokemons.getHp() <= 0) {
+                        currentPlayer.addPokemon(wildPokemons);
+                        consoleUI.notifyCatch(wildPokemons.getName());
                     }
                 }
 

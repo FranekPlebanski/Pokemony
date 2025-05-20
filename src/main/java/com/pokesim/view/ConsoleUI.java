@@ -6,7 +6,6 @@ import com.pokesim.model.entities.Pokemon;
 import com.pokesim.model.entities.WildPokemons;
 import com.pokesim.model.game.BattleAction;
 import com.pokesim.model.game.CityAction;
-import com.pokesim.utils.RandomGenerator;
 
 import java.util.Scanner;
 
@@ -113,6 +112,12 @@ public class ConsoleUI implements UI {
         System.out.println("Opponent attacked you for " + attackValue + " damage!");
 
     }
+
+    @Override
+    public void notifyCatch(String pokemonName){
+        System.out.println("You've caught " + pokemonName);
+    }
+
 
     @Override
     public void notifyRestOpponent(){

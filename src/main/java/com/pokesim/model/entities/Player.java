@@ -14,8 +14,8 @@ public class Player {
     }
 
 
-    public void addPokemon(Pokemon p) {
-        ownedPokemons.add(p);
+    public void addPokemon(Pokemon pokemon) {
+        ownedPokemons.add(pokemon);
     }
 
     public boolean hasPokemons() {

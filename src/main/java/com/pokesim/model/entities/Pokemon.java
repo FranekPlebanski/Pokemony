@@ -46,6 +46,10 @@ public class Pokemon implements Cloneable {
         return attack;
     }
 
+    public void setDefaultHp(){
+        this.hp += 50;
+    }
+
     @Override
     public String toString() {
         return "Pokemon{" +

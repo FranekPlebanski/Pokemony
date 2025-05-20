@@ -21,6 +21,8 @@ public interface UI {
 
     void notifyAttackOpponent(int attackValue);
 
+    void notifyCatch(String pokemonName);
+
     void notifyRestOpponent();
 
     void opponentTurn();
