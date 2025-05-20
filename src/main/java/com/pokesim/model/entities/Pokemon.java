@@ -1,4 +1,4 @@
-﻿package com.pokesim.model.entities;
+package com.pokesim.model.entities;
 
 public class Pokemon {
     private String name;

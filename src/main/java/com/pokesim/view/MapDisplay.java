@@ -1,4 +1,4 @@
-﻿package com.pokesim.view;
+package com.pokesim.view;
 
 public class MapDisplay {
 }

@@ -1,4 +1,4 @@
-﻿package com.pokesim.view;
+package com.pokesim.view;
 
 import com.pokesim.model.world.City;
 

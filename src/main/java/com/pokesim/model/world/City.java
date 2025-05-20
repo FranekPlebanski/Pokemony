@@ -1,4 +1,4 @@
-﻿package com.pokesim.model.world;
+package com.pokesim.model.world;
 
 import java.util.List;
 

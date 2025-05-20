@@ -1,4 +1,4 @@
-﻿package com.pokesim.model.game;
+package com.pokesim.model.game;
 
 import com.pokesim.model.entities.Player;
 import com.pokesim.model.world.City;

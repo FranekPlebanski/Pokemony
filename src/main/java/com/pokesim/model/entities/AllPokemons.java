@@ -1,4 +1,4 @@
-﻿package com.pokesim.model.entities;
+package com.pokesim.model.entities;
 
 import java.util.List;
 
@@ -14,6 +14,10 @@ public class AllPokemons {
             new WildPokemons("Rattata", "Normal", 45, 3),
             new WildPokemons("Zubat", "Poison", 40, 5),
             new WildPokemons("Charmander", "Fire", 70, 12)
+    );
+
+    private final List<StorePokemons> storePokemons = List.of(
+
     );
 
     public List<Pokemon> getStarters() {

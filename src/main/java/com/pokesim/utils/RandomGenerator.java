@@ -1,4 +1,4 @@
-﻿package com.pokesim.utils;
+package com.pokesim.utils;
 
 import java.util.Random;
 
