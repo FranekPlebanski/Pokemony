@@ -1,17 +1,25 @@
 package com.pokesim.view;
 
-import com.pokesim.model.world.City;
+import com.pokesim.model.entities.AllPokemons;
+import com.pokesim.model.entities.Player;
+
+import java.util.Scanner;
 
 public class ConsoleUI {
-    public void displayCityOptions(City city) {
+    private final Scanner scanner = new Scanner(System.in);
 
-    }
+    public Player startGame() {
+        System.out.println("Welcome to the pokesim game!");
+        System.out.println("Choose your name:");
+        String name = scanner.nextLine();
+        System.out.println("Choose starting pokemon:");
 
-    public int getStarterChoice(){
-        return 0;
-    }
+        for (int i = 0; i < AllPokemons.starters.size(); i++) {
+            System.out.printf("%s. %s\n", i, AllPokemons.starters.get(i).toString());
+        }
 
-    public String getName(){
-        return null;
+        int chosenPokemon = scanner.nextInt();
+
+        return new Player(name, AllPokemons.starters.get(chosenPokemon).clone());
     }
 }

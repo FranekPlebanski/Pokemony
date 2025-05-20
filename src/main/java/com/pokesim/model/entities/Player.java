@@ -6,13 +6,10 @@ import java.util.List;
 public class Player {
     private String name;
     private List<Pokemon> ownedPokemons = new ArrayList<>();
-    private int moneyAmmount = 0;
+    private int moneyAmount = 0;
 
-    public Player(String name) {
+    public Player(String name, Pokemon starter) {
         this.name = name;
-    }
-
-    public void chooseStarter(Pokemon starter) {
         ownedPokemons.add(starter);
     }
 
