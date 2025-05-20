@@ -6,6 +6,7 @@ import java.util.List;
 public class Player {
     private String name;
     private List<Pokemon> ownedPokemons = new ArrayList<>();
+    private int moneyAmmount = 0;
 
     public Player(String name) {
         this.name = name;
