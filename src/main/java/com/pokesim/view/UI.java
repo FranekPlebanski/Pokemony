@@ -23,7 +23,15 @@ public interface UI {
 
     void notifyCatch(String pokemonName);
 
+    void notifyLosePokemon(Pokemon pokemon);
+
     void notifyRestOpponent();
 
     void opponentTurn();
+
+    void notifyCityHeal();
+
+    void getStoreMenu();
+
+    void displayMoneyAmount(Player currentPlayer);
 }

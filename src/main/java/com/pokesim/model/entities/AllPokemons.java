@@ -13,12 +13,12 @@ public class AllPokemons {
             new WildPokemons("Pidgey", "Air", 50, 4),
             new WildPokemons("Rattata", "Normal", 45, 3),
             new WildPokemons("Zubat", "Poison", 40, 5),
-            new WildPokemons("Charmander", "Fire", 70, 12),
-            new WildPokemons("Snorlax", "normal", 460, 100)
+            new WildPokemons("Charmander", "Fire", 70, 12)
     );
 
     private final List<Pokemon> storePokemons = List.of(
-            new StorePokemon("Snorlax", "normal", 460, 100, 20)
+            new StorePokemon("Snorlax", "normal", 460, 100, 20),
+            new StorePokemon("Diglet", "Earth", 20, 10, 5)
     );
 
     public List<Pokemon> getStarters() {
@@ -27,6 +27,10 @@ public class AllPokemons {
 
     public List<WildPokemons> getWildPokemons() {
         return wildPokemons;
+    }
+
+    public List<Pokemon> getStorePokemons() {
+        return storePokemons;
     }
 
     public Pokemon getStarter(int index) {

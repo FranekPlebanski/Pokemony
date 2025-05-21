@@ -50,6 +50,10 @@ public class Pokemon implements Cloneable {
         this.hp += 50;
     }
 
+    public void cityPokemonHeal(){
+        this.hp += 30;
+    }
+
     @Override
     public String toString() {
         return "Pokemon{" +

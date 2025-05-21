@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class ConsoleUI implements UI {
     private final Scanner scanner = new Scanner(System.in);
+    AllPokemons allPokemons = new AllPokemons();
 
     @Override
     public Player startGame() {
@@ -25,7 +26,7 @@ public class ConsoleUI implements UI {
 
         int chosenPokemon = scanner.nextInt();
 
-        return new Player(name, AllPokemons.starters.get(chosenPokemon).clone());
+        return new Player(name, AllPokemons.starters.get(chosenPokemon).clone(), 0);
     }
 
     @Override
@@ -118,6 +119,11 @@ public class ConsoleUI implements UI {
         System.out.println("You've caught " + pokemonName);
     }
 
+    @Override
+    public void notifyLosePokemon(Pokemon pokemon){
+        System.out.println("You've lost pokemon " + pokemon.getName());
+    }
+
 
     @Override
     public void notifyRestOpponent(){
@@ -127,5 +133,22 @@ public class ConsoleUI implements UI {
     @Override
     public void opponentTurn(){
         System.out.println("Opponent's turn!");
+    }
+
+    @Override
+    public void notifyCityHeal(){
+        System.out.println("You've healed all your pokemons!");
+    }
+
+    @Override
+    public void getStoreMenu(){
+        for (int i = 0; i < allPokemons.getStorePokemons().size(); i++) {
+            System.out.println(allPokemons.getStorePokemons().get(i));
+        }
+    }
+
+    @Override
+    public void displayMoneyAmount(Player currentPlayer){
+        System.out.println("Your balance: " + currentPlayer.getMoneyAmount());
     }
 }

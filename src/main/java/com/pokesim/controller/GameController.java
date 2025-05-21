@@ -9,11 +9,13 @@ import com.pokesim.model.game.WildPokemonRandomChoice;
 import com.pokesim.utils.RandomGenerator;
 import com.pokesim.view.ConsoleUI;
 import com.pokesim.view.UI;
+import com.pokesim.model.entities.AllPokemons;
 
 public class GameController {
 
     private final UI consoleUI;
     private Player currentPlayer;
+    private AllPokemons allPokemons;
 
 
     public GameController(UI consoleUI) {
@@ -26,9 +28,19 @@ public class GameController {
             CityAction action = consoleUI.cityMenu("aaa");
             if (action == CityAction.BUY_POKEMON) {
 
-            } else if (action == CityAction.HEAL) {
+                consoleUI.getStoreMenu();
+                consoleUI.displayMoneyAmount(currentPlayer);
 
-            } else if (action == CityAction.FIGHT) {
+
+            }
+            else if (action == CityAction.HEAL) {
+
+                currentPlayer.cityPokemonHeal();
+                consoleUI.notifyCityHeal();
+
+
+            }
+            else if (action == CityAction.FIGHT) {
                 WildPokemons wildPokemons = new WildPokemonRandomChoice().getRandomWildPokemon();
                 Pokemon chosenOne = consoleUI.battleInfo(wildPokemons, currentPlayer);
                 while (wildPokemons.getHp() > 0 && chosenOne.getHp() > 0) {
@@ -59,11 +71,14 @@ public class GameController {
 
                     if(chosenOne.getHp() <= 0) {
                         currentPlayer.removePokemon(chosenOne);
+                        consoleUI.notifyLosePokemon(chosenOne);
                     } else if (wildPokemons.getHp() <= 0) {
                         currentPlayer.addPokemon(wildPokemons);
                         consoleUI.notifyCatch(wildPokemons.getName());
+                        currentPlayer.winBattleMoney();
                     }
                 }
+                wildPokemons.setDefaultHp();
 
             }
 
