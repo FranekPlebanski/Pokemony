@@ -2,6 +2,7 @@ package com.pokesim.view;
 
 import com.pokesim.model.entities.Player;
 import com.pokesim.model.entities.Pokemon;
+import com.pokesim.model.entities.StorePokemon;
 import com.pokesim.model.entities.WildPokemons;
 import com.pokesim.model.game.BattleAction;
 import com.pokesim.model.game.CityAction;
@@ -31,7 +32,7 @@ public interface UI {
 
     void notifyCityHeal();
 
-    void getStoreMenu();
+    StorePokemon getStoreMenu();
 
     void displayMoneyAmount(Player currentPlayer);
 }

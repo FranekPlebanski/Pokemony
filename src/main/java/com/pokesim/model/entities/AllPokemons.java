@@ -16,7 +16,7 @@ public class AllPokemons {
             new WildPokemons("Charmander", "Fire", 70, 12)
     );
 
-    private final List<Pokemon> storePokemons = List.of(
+    private final List<StorePokemon> storePokemons = List.of(
             new StorePokemon("Snorlax", "normal", 460, 100, 20),
             new StorePokemon("Diglet", "Earth", 20, 10, 5)
     );
@@ -29,7 +29,7 @@ public class AllPokemons {
         return wildPokemons;
     }
 
-    public List<Pokemon> getStorePokemons() {
+    public List<StorePokemon> getStorePokemons() {
         return storePokemons;
     }
 

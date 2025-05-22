@@ -1,5 +1,7 @@
 package com.pokesim.model.entities;
 
+import com.pokesim.model.world.City;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,15 +9,25 @@ public class Player {
     private String name;
     private List<Pokemon> ownedPokemons = new ArrayList<>();
     private int moneyAmount = 0;
+    private String currentCity;
 
-    public Player(String name, Pokemon starter, int moneyAmount) {
+    public Player(String name, Pokemon starter, int moneyAmount, City currentCity) {
         this.name = name;
         ownedPokemons.add(starter);
         this.moneyAmount = moneyAmount;
+        this.currentCity = currentCity.getName();
     }
 
     public int getMoneyAmount() {
         return moneyAmount;
+    }
+
+    public String getCurrentCity() {
+        return currentCity;
+    }
+
+    public void changeCurrentCity(String newCity) {
+        currentCity = newCity;
     }
 
     public void winBattleMoney(){

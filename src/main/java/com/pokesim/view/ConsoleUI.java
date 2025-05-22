@@ -1,11 +1,9 @@
 package com.pokesim.view;
 
-import com.pokesim.model.entities.AllPokemons;
-import com.pokesim.model.entities.Player;
-import com.pokesim.model.entities.Pokemon;
-import com.pokesim.model.entities.WildPokemons;
+import com.pokesim.model.entities.*;
 import com.pokesim.model.game.BattleAction;
 import com.pokesim.model.game.CityAction;
+import com.pokesim.model.world.City;
 
 import java.util.Scanner;
 
@@ -26,7 +24,7 @@ public class ConsoleUI implements UI {
 
         int chosenPokemon = scanner.nextInt();
 
-        return new Player(name, AllPokemons.starters.get(chosenPokemon).clone(), 0);
+        return new Player(name, AllPokemons.starters.get(chosenPokemon).clone(), 0, new City("Jonto"));
     }
 
     @Override
@@ -57,7 +55,7 @@ public class ConsoleUI implements UI {
     @Override
     public Pokemon battleInfo(WildPokemons wildPokemons, Player currentPlayer) {
 
-        System.out.println("WARNING!!! You have encountered " + wildPokemons);
+        System.out.println("WARNING!!! You have encountered a " + wildPokemons);
         System.out.println("Choose your fighter: ");
         for (int i = 0; i < currentPlayer.getPokemons().size(); i++) {
             System.out.printf("%s. %s\n", i, currentPlayer.getPokemons().get(i).toString());
@@ -141,10 +139,12 @@ public class ConsoleUI implements UI {
     }
 
     @Override
-    public void getStoreMenu(){
+    public StorePokemon getStoreMenu(){
         for (int i = 0; i < allPokemons.getStorePokemons().size(); i++) {
-            System.out.println(allPokemons.getStorePokemons().get(i));
+            System.out.println(i + "." + allPokemons.getStorePokemons().get(i));
         }
+        int pokemonToBuy = scanner.nextInt();
+        return allPokemons.getStorePokemons().get(pokemonToBuy);
     }
 
     @Override

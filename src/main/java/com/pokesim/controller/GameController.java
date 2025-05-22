@@ -1,15 +1,13 @@
 package com.pokesim.controller;
 
-import com.pokesim.model.entities.Player;
-import com.pokesim.model.entities.Pokemon;
-import com.pokesim.model.entities.WildPokemons;
+import com.pokesim.model.entities.*;
 import com.pokesim.model.game.BattleAction;
 import com.pokesim.model.game.CityAction;
 import com.pokesim.model.game.WildPokemonRandomChoice;
+import com.pokesim.model.store.PokemonStore;
 import com.pokesim.utils.RandomGenerator;
 import com.pokesim.view.ConsoleUI;
 import com.pokesim.view.UI;
-import com.pokesim.model.entities.AllPokemons;
 
 public class GameController {
 
@@ -24,12 +22,20 @@ public class GameController {
 
     public void run() {
         this.currentPlayer = consoleUI.startGame();
-        while(true) {
-            CityAction action = consoleUI.cityMenu("aaa");
+        while(currentPlayer.getPokemons().size() < 10 || !currentPlayer.getPokemons().isEmpty()) {
+            CityAction action = consoleUI.cityMenu(currentPlayer.getCurrentCity());
             if (action == CityAction.BUY_POKEMON) {
 
-                consoleUI.getStoreMenu();
                 consoleUI.displayMoneyAmount(currentPlayer);
+                StorePokemon pokemonToBuy = consoleUI.getStoreMenu();
+                if(pokemonToBuy.getPrice() > currentPlayer.getMoneyAmount()){
+                    System.out.println("not bought");  // temp
+                }
+                else{
+                    System.out.println("bought");
+                }
+
+
 
 
             }
@@ -80,6 +86,16 @@ public class GameController {
                 }
                 wildPokemons.setDefaultHp();
 
+            }
+
+            if(currentPlayer.getCurrentCity() == "Jonto") {
+                currentPlayer.changeCurrentCity("Honto");
+            }
+            else if(currentPlayer.getCurrentCity() == "Honto") {
+                currentPlayer.changeCurrentCity("Ponto");
+            }
+            else{
+                currentPlayer.changeCurrentCity("Jonto");
             }
 
 

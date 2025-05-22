@@ -10,6 +10,10 @@ public class StorePokemon extends Pokemon {
 
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         return "Pokemon{" +
