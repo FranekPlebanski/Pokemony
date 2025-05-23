@@ -34,5 +34,9 @@ public interface UI {
 
     StorePokemon getStoreMenu();
 
+    void notifyBuyPokemon(String pokemonName);
+
+    void notifyNoBuyPokemon(String pokemonName);
+
     void displayMoneyAmount(Player currentPlayer);
 }

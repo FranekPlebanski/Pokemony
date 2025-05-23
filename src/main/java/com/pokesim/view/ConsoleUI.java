@@ -34,7 +34,7 @@ public class ConsoleUI implements UI {
 
             System.out.println("Welcome to the " + city);
             System.out.println("1. Go on road");
-            System.out.println("2. Heal pokemons");
+            System.out.println("2. Heal pokemons (5 coins)");
             System.out.println("3. Buy pokemons");
             int choice = scanner.nextInt();
             switch (choice) {
@@ -143,8 +143,25 @@ public class ConsoleUI implements UI {
         for (int i = 0; i < allPokemons.getStorePokemons().size(); i++) {
             System.out.println(i + "." + allPokemons.getStorePokemons().get(i));
         }
+        System.out.println(allPokemons.getStorePokemons().size() + ". Exit");
         int pokemonToBuy = scanner.nextInt();
-        return allPokemons.getStorePokemons().get(pokemonToBuy);
+        if(pokemonToBuy < allPokemons.getStorePokemons().size()){
+            return allPokemons.getStorePokemons().get(pokemonToBuy);
+        }
+        else{
+            return null;
+        }
+
+    }
+
+    @Override
+    public void notifyBuyPokemon(String pokemonName){
+        System.out.println("You've bought " + pokemonName);
+    }
+
+    @Override
+    public void notifyNoBuyPokemon(String pokemonName){
+        System.out.println("You can't afford " + pokemonName);
     }
 
     @Override

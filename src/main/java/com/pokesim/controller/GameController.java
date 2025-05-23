@@ -29,10 +29,10 @@ public class GameController {
                 consoleUI.displayMoneyAmount(currentPlayer);
                 StorePokemon pokemonToBuy = consoleUI.getStoreMenu();
                 if(pokemonToBuy.getPrice() > currentPlayer.getMoneyAmount()){
-                    System.out.println("not bought");  // temp
+                    consoleUI.notifyNoBuyPokemon(pokemonToBuy.getName());
                 }
                 else{
-                    System.out.println("bought");
+                    consoleUI.notifyBuyPokemon(pokemonToBuy.getName());
                 }
 
 
